@@ -3,5 +3,7 @@ ServerName emailstat.us
 ServerAlias *.emailstat.us
 WSGIScriptAlias / /var/wsgi/emailstatus/emailstatus.wsgi
 Alias /media /var/wsgi/emailstatus/media/
+Alias /static /var/wsgi/emailstatus/static/
 
+Options -Indexes
 </VirtualHost>
