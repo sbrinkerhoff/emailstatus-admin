@@ -1,0 +1,35 @@
+- hosts: frontend
+  user: root
+  tasks:
+  - name: Setup | Install Apache
+    action: apt pkg=$item state=installed
+    tags: common
+    with_items:
+    - apache2
+    - libapache2-mod-wsgi
+    - apache2-utils
+  - name: Setup | Git Client
+    action: apt pkg=git
+  - name: Setup | Install Python
+    action: apt pkg=$item state=installed
+    with_items:
+    - python
+    - python-all-dev
+    - python-pip
+    - python-virtualenv
+    - python-django
+  - name: Setup | Build Essentials 
+    action: apt pkg=build-essential
+  - action: pip name=$item state=present
+    with_items:
+    - pyzmq
+  - name: Deploy | Emailstat.us vhost
+    action: template src=../content/emailstat.us dest=/etc/apache2/sites-available/emailstat.us
+  - name: Deploy | Enable emailstat.us vhost
+    action: command a2ensite emailstat.us creates=/etc/apache2/sites-enabled/emailstat.us
+  - name: Services | Restart Apache
+    action: service name=apache2 state=restarted
+  - name: Deploy | Create WSGI directory
+    action: command mkdir /var/wsgi
+  - name: Deploy | GIT Clone
+    action: command git clone git\://github.com/sbrinkerhoff/emailstatus-webapp.git /var/wsgi/emailstatus

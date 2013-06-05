@@ -1,0 +1,7 @@
+<VirtualHost *:80>
+ServerName emailstat.us
+ServerAlias *.emailstat.us
+WSGIScriptAlias / /var/wsgi/emailstatus/emailstatus.wsgi
+Alias /media /var/wsgi/emailstatus/media/
+
+</VirtualHost>

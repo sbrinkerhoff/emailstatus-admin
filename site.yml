@@ -1,0 +1,8 @@
+- hosts: all
+  user: root
+  tasks:
+  - apt: update-cache=yes
+    when_unset: $apt_cache_updated
+    register: apt_cache_updated
+
+- include: roles/web.yml
