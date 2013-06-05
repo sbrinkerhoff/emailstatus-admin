@@ -1,0 +1,9 @@
+- hosts: middle-node
+  user: root
+  tasks:
+  - name: Setup | Install nodejs
+    action: apt pkg=$item state=installed
+    tags: common
+    with_items:
+    - nodejs 
+    - nodejs-dev 

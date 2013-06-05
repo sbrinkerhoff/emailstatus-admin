@@ -1,0 +1,10 @@
+- hosts: backend-mongo 
+  user: root
+  tasks:
+  - name: Setup | Install mongo 
+    action: apt pkg=$item state=installed
+    tags: common
+    with_items:
+    - mongodb
+    - mongodb-server
+    - python-pymongo
