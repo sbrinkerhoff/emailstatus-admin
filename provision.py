@@ -20,9 +20,6 @@ logging.basicConfig(level=logging.INFO)
 
 __VER__ = '0.0.1'
 
-API_KEY = 'Gr33neggs'
-USERNAME = 'stanbrinkerhoff'
-
 ENDPOINT = rackspace_auth_openstack.plugin.auth_url_us()
 
 config = {
