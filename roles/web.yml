@@ -32,4 +32,4 @@
   - name: Deploy | Create WSGI directory
     action: command mkdir /var/wsgi creates=/var/wsgi
   - name: Deploy | GIT Clone
-    action: command git clone git\://github.com/sbrinkerhoff/emailstatus-webapp.git /var/wsgi/emailstatus
+    action: git repo=git\://github.com/sbrinkerhoff/emailstatus-webapp.git dest=/var/wsgi/emailstatus
