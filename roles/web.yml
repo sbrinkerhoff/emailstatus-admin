@@ -30,6 +30,6 @@
   - name: Services | Restart Apache
     action: service name=apache2 state=restarted
   - name: Deploy | Create WSGI directory
-    action: command mkdir /var/wsgi
+    action: command mkdir /var/wsgi creates=/var/wsgi
   - name: Deploy | GIT Clone
     action: command git clone git\://github.com/sbrinkerhoff/emailstatus-webapp.git /var/wsgi/emailstatus
